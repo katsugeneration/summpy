@@ -32,7 +32,7 @@ def summarize(text, char_limit, sentence_filter=None, debug=False):
     sents = list(tools.sent_splitter_ja(text))
     words_list = [
         # pulp variables should be utf-8 encoded
-        w.encode('utf-8') for s in sents for w in tools.word_segmenter_ja(s)
+        w for s in sents for w in tools.word_segmenter_ja(s)
     ]
 
     tf = collections.Counter()
@@ -80,7 +80,7 @@ def summarize(text, char_limit, sentence_filter=None, debug=False):
 
     sent_indices = []
     for v in prob.variables():
-        # print v.name, "=", v.varValue
+        # print(v.name, "=", v.varValue)
         if v.name.startswith('sents') and v.varValue == 1:
             sent_indices.append(int(v.name.split('_')[-1]))
 
@@ -103,7 +103,7 @@ Usage:
     options = dict(options)
 
     if len(options) < 2:
-        print _usage
+        print(_usage)
         sys.exit(0)
 
     fname = options['-f']
@@ -113,7 +113,7 @@ Usage:
     if fname == 'stdin':
         text = '\n'.join(
             line for line in sys.stdin.readlines()
-        ).decode(encoding)
+        )
     else:
         text = codecs.open(fname, encoding=encoding).read()
 
@@ -123,4 +123,4 @@ Usage:
     sentences, debug_info = summarize(text, char_limit=char_limit)
                                       #sentence_filter=not_too_short)
     for sent in sentences:
-        print sent.strip().encode(encoding)
+        print(sent.strip())

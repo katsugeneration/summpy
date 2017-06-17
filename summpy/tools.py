@@ -17,7 +17,7 @@ def tree_encode(obj, encoding='utf-8'):
         )
         return new_obj
     elif type_ == unicode:
-        return obj.encode(encoding)
+        return obj
     else:
         return obj
 

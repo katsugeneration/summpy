@@ -43,7 +43,7 @@ def _decode_janome_token(t, encoding='utf-8'):
     for attr_name in attributes:
         value = getattr(t, attr_name)
         if type(value) == str:
-            setattr(t, attr_name, value.decode('utf-8'))
+            setattr(t, attr_name, value)
     return t
 
 
@@ -59,5 +59,5 @@ def word_segmenter_ja(sent, node_filter=not_stopword,
 
 
 if __name__ == '__main__':
-    text = u'今日はいい天気ですね。'
-    print '|'.join(word_segmenter_ja(text)).encode('utf-8')
+    text = '今日はいい天気ですね。'
+    print('|'.join(word_segmenter_ja(text)))

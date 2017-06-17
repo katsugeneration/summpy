@@ -82,7 +82,7 @@ sentences, debug_info = summarize(
 )
 
 for sent in sentences:
-    print sent.strip().encode(encoding)
+    print(sent.strip())
 ```
 
 For further details, see `main` part of `summpy/lexrank.py` or `mcp_summ.py`.

@@ -60,6 +60,7 @@ def node2norm_word(n):  # mecab node
 
 def word_segmenter_ja(sent, node_filter=not_stopword,
                       node2word=node2norm_word, mecab_encoding='utf-8'):
+    _mecab.parse("")
     nodes = list(
         _mecab_node2seq(_mecab.parseToNode(sent), mecab_encoding=mecab_encoding)
     )
